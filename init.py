@@ -1,9 +1,11 @@
 import files
 import logging
+from urllib import error,request
 
 
 CONF_FOLDER_NAME = "conf"
 CONF_FILE_NAME = "abooboo_bot.conf"
+TELEGRAM_DOMAIN = "https://api.telegram.org"
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 
@@ -29,10 +31,12 @@ class Initial:
         elif not self.checkToken():
             logging.error("token not present or not valid, check the configuration file")
             return False
-            
-        return True
-        
+        elif not self.checkTelegramConnection():
+            logging.error("unable to connect to telegram api")
+            return False
 
+
+        return True
     
     def createDefaultConfig(self):
         conf = files.ConfigService(CONF_FOLDER_NAME,CONF_FILE_NAME)
@@ -42,4 +46,10 @@ class Initial:
         conf = files.ConfigService(CONF_FOLDER_NAME,CONF_FILE_NAME)
         conf.readConfig()
         return True if conf.getValue("TOKEN","telegramtoken")!= "" and conf.getValue("TOKEN","telegramtoken")!= "replace-me" else False
-    
+
+    def checkTelegramConnection(self):
+        try:
+            request.urlopen(TELEGRAM_DOMAIN, timeout=1)
+            return True
+        except error.URLError as err: 
+            return False
