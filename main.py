@@ -9,6 +9,9 @@ def main():
         logging.info("bot not started, check the logs and restart")
         exit()
     logging.info("bot starting...")
+    initBot.initBot()
+    initBot.addAllCommands()
+    initBot.startBot()
 
 if __name__ == "__main__":
     main()

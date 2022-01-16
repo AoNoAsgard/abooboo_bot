@@ -1,5 +1,8 @@
 import files
 import logging
+import bot
+import commands
+from telegram.ext import CommandHandler, MessageHandler, Filters
 from urllib import error,request
 
 
@@ -53,3 +56,20 @@ class Initial:
             return True
         except error.URLError as err: 
             return False
+    
+    def getBotToken(self):
+        conf = files.ConfigService(CONF_FOLDER_NAME,CONF_FILE_NAME)
+        conf.readConfig()
+        return conf.getValue("TOKEN","telegramtoken")
+
+    def initBot(self):
+        self.bot = bot.Abooboo(self.getBotToken())
+    
+    def addAllCommands(self):
+        self.bot.addHandler(CommandHandler("start",commands.start))
+        self.bot.addHandler(CommandHandler("help",commands.help))
+        self.bot.addHandler(MessageHandler( Filters.text & ~Filters.command , commands.messages))
+    
+    def startBot(self):
+        self.bot.startBot()
+
