@@ -44,7 +44,11 @@ class Initial:
     def createDefaultConfig(self):
         conf = files.ConfigService(CONF_FOLDER_NAME,CONF_FILE_NAME)
         conf.addValue("TOKEN","telegramtoken","replace-me")
+        conf.addValue("SETTINGS","randomReply","False")
+        conf.addValue("SETTINGS","probabilityToReply","1000")
         conf.saveConfig()
+
+
     def checkToken(self):
         conf = files.ConfigService(CONF_FOLDER_NAME,CONF_FILE_NAME)
         conf.readConfig()
