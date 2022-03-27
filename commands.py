@@ -2,7 +2,8 @@ from inspect import getmembers, isfunction
 from telegram import Update, ForceReply
 from telegram.ext import Updater, CallbackContext
 from inspect import getmembers, isfunction
-import messageToRespond
+import messages.messageToRespond as messageToRespond
+import messages.insults as insults
 
 listOfFunctionForMessages = []
 
@@ -22,6 +23,7 @@ def messages(update: Update, context: CallbackContext) -> None:
     for name,functionForMessage in listOfFunctionForMessages:
         functionForMessage(update)
 
-
+def insulta(update: Update,context: CallbackContext)-> None:
+    insults.insulta(update)
 
 listOfFunctionForMessages = getmembers(messageToRespond,isfunction)

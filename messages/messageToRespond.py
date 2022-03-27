@@ -13,7 +13,7 @@ listOfReplyForHi =["Ciao anche a te","Salve salvino", "Ciao tizio","Ciao :D"]
 
 listOfReplyForEmoji =["TI BANNO","NON SI FA", "AAAAAAAAAAAAAAAAAAAAAAAAAAA","CATTIVO BIMBO","VAI IN PUNIZIONE CATTIVO"]
 
-listOfRandomReply =["Confermo","Ma sei sicuro?", "non ne sono confermo","eh immagino","sisì","hahahahahahaha","che bello","sisì"]
+listOfRandomReply =["Confermo","Ma sei sicuro?", "non ne sono sicuro","eh immagino","sisì","hahahahahahaha","che bello","sisì"]
 
 
 

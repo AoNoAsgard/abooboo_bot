@@ -72,6 +72,7 @@ class Initial:
     def addAllCommands(self):
         self.bot.addHandler(CommandHandler("start",commands.start))
         self.bot.addHandler(CommandHandler("help",commands.help))
+        self.bot.addHandler(CommandHandler("insulta",commands.insulta))
         self.bot.addHandler(MessageHandler( Filters.text & ~Filters.command , commands.messages))
     
     def startBot(self):
