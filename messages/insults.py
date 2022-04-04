@@ -5,7 +5,7 @@ import telegram as telegram
 
 
 listOfInsultsToSelf =[
-    "Sei così stupido che in una gara di stupido riusciresti comunque ad arrivare secondo",
+    "Sei così stupido che in una gara di stupidità riusciresti comunque ad arrivare secondo",
     "Se cadessi in un fiume sarebbe una sfortuna. Ma se qualcuno ti ci tirasse fuori sarebbe una calamità", 
     "Ma sei scemo?",
     "Tua madre se ingoiava faceva una cosa buona quella notte",
@@ -18,13 +18,16 @@ listOfInsultsToSelf =[
     "Se fossimo rimasti solo noi due nel mondo preferirei vivere nella fiaba del principe ranocchio. Almeno saresti baciabile",
     "Tua madre è così grassa che non ci sta in una slide",
     "Tua madre è così grassa che provo a fargli una foto mi si riempie la memoria",
-    "Quando non riesco a cagare, il primo pensiero che mi viene in mente sei tu"]
+    "Quando non riesco a cagare, il primo pensiero che mi viene in mente sei tu",
+    "Mi chiedo se il tuo culo sia geloso della quantità di merda che esce fuori dalla tua bocca"
+]
 
 listOfInsultsToSomeone = [
     "Dedicato a te, {Insultato} \nNAGG CHI TE STRAMIL MUORT!",
     "{Insultato} sei cattivo",
     "{Insultato} non sei un clown, sei l'intero circo",
-    "Ohi, {Insultato} vattene che hai già fatto schifo abbastanza per oggi"
+    "Ohi, {Insultato} vattene che hai già fatto schifo abbastanza per oggi",
+    "Ehi {Insultato}, se non la smetti di rompere i coglioni, TI FICCO UNA SPRANGA SU PER IL CULO!"
 ]
 
 def insulta(update: Update):
