@@ -6,4 +6,4 @@ def is_emoji(s):
         count += s.count(emoji)
         if count > 0:
             return True
-    return bool(count)
+    return False
