@@ -27,18 +27,16 @@ def help(update: Update, context: CallbackContext) -> None:
 def messages(update: Update, context: CallbackContext) -> None:
     logging.debug("got new message")
     message = {}
-    print(1)
     if update.message != None:
-        print(2)
         message = update.message
     if update.edited_message != None:
-        print(2)
         message = update.edited_message
     if message.caption != None:
-        print(3)
         message_photo(update,context)
+    elif message.sticker != None:
+        if "emoji" in message.sticker.set_name.lower():
+            update.message.reply_text(random.choice(listOfReplyForEmoji))
     else:
-        print(4)
         for name,functionForMessage in listOfFunctionForMessages:
             functionForMessage(update)
 
