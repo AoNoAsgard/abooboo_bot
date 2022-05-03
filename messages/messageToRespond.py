@@ -1,4 +1,5 @@
 import random
+from types import NoneType
 import utilities
 import logging
 import files
@@ -18,13 +19,23 @@ listOfRandomReply =["Confermo","Ma sei sicuro?", "non ne sono sicuro","eh immagi
 
 
 def replyHi(update):
-    message = update.message.text.lower();
-    if(any(string in listTypesHi for string in message.split())):
-        update.message.reply_text(random.choice(listOfReplyForHi))
+    if(update.message != None):
+        message = update.message.text.lower();
+        if(any(string in listTypesHi for string in message.split())):
+            update.message.reply_text(random.choice(listOfReplyForHi))
 
 def replyEmoji(update):
-    if(utilities.is_emoji(update.message.text)):
-        update.message.reply_text(random.choice(listOfReplyForEmoji))
+    
+    if  update.edited_message != None:
+        message = update.edited_message.text
+    else:
+        message = update.message.text;
+    
+    if(utilities.is_emoji(message)):
+        if  update.edited_message != None:
+            update.edited_message.reply_text(random.choice(listOfReplyForEmoji))
+        else:
+            update.message.reply_text(random.choice(listOfReplyForEmoji))
 
 def oneOfX(update):
     config = files.ConfigService(CONF_FOLDER_NAME,CONF_FILE_NAME)
