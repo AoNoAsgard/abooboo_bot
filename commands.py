@@ -1,9 +1,14 @@
 from inspect import getmembers, isfunction
+import random
+import logging
 from telegram import Update, ForceReply
 from telegram.ext import Updater, CallbackContext
 from inspect import getmembers, isfunction
 import messages.messageToRespond as messageToRespond
+from messages.messageToRespond import listOfReplyForEmoji
 import messages.insults as insults
+from utilities import is_emoji
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 listOfFunctionForMessages = []
 
@@ -20,8 +25,30 @@ def help(update: Update, context: CallbackContext) -> None:
 
 
 def messages(update: Update, context: CallbackContext) -> None:
-    for name,functionForMessage in listOfFunctionForMessages:
-        functionForMessage(update)
+    logging.debug("got new message")
+    message = {}
+    print(1)
+    if update.message != None:
+        print(2)
+        message = update.message
+    if update.edited_message != None:
+        print(2)
+        message = update.edited_message
+    if message.caption != None:
+        print(3)
+        message_photo(update,context)
+    else:
+        print(4)
+        for name,functionForMessage in listOfFunctionForMessages:
+            functionForMessage(update)
+
+def message_photo(update: Update, context: CallbackContext) -> None:
+    if update.message != None:
+        if is_emoji(update.message.caption):
+            update.message.reply_text(random.choice(listOfReplyForEmoji))
+    if update.edited_message != None:
+        if is_emoji(update.edited_message.caption):
+            update.edited_message.reply_text(random.choice(listOfReplyForEmoji))
 
 def insulta(update: Update,context: CallbackContext)-> None:
     insults.insulta(update)
