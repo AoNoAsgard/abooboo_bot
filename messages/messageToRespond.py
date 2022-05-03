@@ -1,5 +1,4 @@
 import random
-from types import NoneType
 import utilities
 import logging
 import files
